@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Live Births vs TFR by State",
+  "width": "container",
+  "height": 380,
+  "autosize": { "type": "fit", "contains": "padding" },
+  "data": {"url": "data/scatter_births_vs_tfr_2013_2023.csv"},
+  "params": [
+    {
+      "name": "yr",
+      "value": 2023,
+      "bind": {"input": "range", "min": 2013, "max": 2023, "step": 1}
+    }
+  ],
+  "transform": [{"filter": "datum.year == yr"}],
+  "mark": {"type": "circle"},
+  "encoding": {
+    "x": {"field": "tfr", "type": "quantitative", "title": "TFR"},
+    "y": {"field": "live_birth", "type": "quantitative", "title": "Live births"},
+    "color": {"field": "state", "type": "nominal", "legend": null},
+    "tooltip": [
+      {"field": "state"},
+      {"field": "year"},
+      {"field": "tfr", "type": "quantitative", "format": ".2f"},
+      {"field": "live_birth", "type": "quantitative"}
+    ]
+  }
+}
