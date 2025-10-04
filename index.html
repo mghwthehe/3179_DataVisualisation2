@@ -17,6 +17,11 @@
 
   <main class="container grid"> 
     <section class="card">
+      <h2> Live Birth Rate per 1000 people </h2>
+      <div id="vis-choropleth" class="viz"> </div>
+    </section>
+
+    <section class="card">
       <h2> TFR Trend by State </h2>
       <div id="vis-line" class="viz"></div>
     </section>
@@ -33,6 +38,7 @@
   </footer>
 
   <script>
+    vegaEmbed('#vis-choropleth', 'js/choropleth_map_live_birth_rate.json', {actions:false});
     vegaEmbed('#vis-line',       'js/line_chart_tfr_trend.json', {actions:false});
     vegaEmbed('#vis-scatter',    'js/scatter_births_vs_tfr.json', {actions:false});
   </script>
